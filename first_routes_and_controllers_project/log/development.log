@@ -625,3 +625,163 @@ Processing by UsersController#index as */*
 Completed 200 OK in 30ms (Views: 12.7ms | ActiveRecord: 7.6ms)
 
 
+Started POST "/users?user[email]=stella@gmail.com&user[name]=stella" for ::1 at 2021-09-15 16:03:47 -0400
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/stella/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#create as */*
+  Parameters: {"favorite_food"=>"pizza", "location"=>"new+york", "user"=>{"email"=>"stella@gmail.com", "name"=>"stella"}}
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:11
+  [1m[36mUser Create (1.5ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "stella"], ["email", "stella@gmail.com"], ["created_at", "2021-09-15 20:03:48.171621"], ["updated_at", "2021-09-15 20:03:48.171621"]]
+  ↳ app/controllers/users_controller.rb:11
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:11
+Completed 200 OK in 56ms (Views: 1.5ms | ActiveRecord: 19.8ms)
+
+
+Started POST "/users?user[email]=stella@gmail.com" for ::1 at 2021-09-15 16:04:39 -0400
+Processing by UsersController#create as */*
+  Parameters: {"favorite_food"=>"pizza", "location"=>"new+york", "user"=>{"email"=>"stella@gmail.com"}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:11
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:11
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 0.4ms)
+
+
+  
+NoMethodError (undefined method `error' for #<User:0x00007ff668088e80>
+Did you mean?  errors):
+  
+app/controllers/users_controller.rb:14:in `create'
+Started POST "/users?user[email]=stella@gmail.com" for ::1 at 2021-09-15 16:04:56 -0400
+Processing by UsersController#create as */*
+  Parameters: {"favorite_food"=>"pizza", "location"=>"new+york", "user"=>{"email"=>"stella@gmail.com"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:11
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/users_controller.rb:11
+Completed 422 Unprocessable Entity in 16ms (Views: 0.2ms | ActiveRecord: 5.8ms)
+
+
+Started GET "/users/3" for ::1 at 2021-09-15 16:10:54 -0400
+Processing by UsersController#show as */*
+  Parameters: {"favorite_food"=>"pizza", "location"=>"new+york", "id"=>"3"}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19
+Completed 200 OK in 25ms (Views: 0.7ms | ActiveRecord: 12.3ms)
+
+
+Started PATCH "/users/3" for ::1 at 2021-09-15 16:12:23 -0400
+Processing by UsersController#update as */*
+  Parameters: {"user"=>{"name"=>"edited_dean"}, "id"=>"3"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:24
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:26
+  [1m[36mUser Update (0.8ms)[0m  [1m[33mUPDATE "users" SET "name" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["name", "edited_dean"], ["updated_at", "2021-09-15 20:12:23.191239"], ["id", 3]]
+  ↳ app/controllers/users_controller.rb:26
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:26
+Redirected to http://localhost:3000/users/3
+Completed 302 Found in 6ms (ActiveRecord: 2.3ms)
+
+
+Started GET "/users/3" for ::1 at 2021-09-15 16:12:23 -0400
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.4ms)
+
+
+Started DELETE "/users/3" for ::1 at 2021-09-15 16:12:42 -0400
+Processing by UsersController#destroy as */*
+  Parameters: {"user"=>{"name"=>"edited_dean"}, "id"=>"3"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:34
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:36
+  [1m[36mUser Destroy (0.5ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 3]]
+  ↳ app/controllers/users_controller.rb:36
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:36
+Redirected to http://localhost:3000/users
+Completed 302 Found in 5ms (ActiveRecord: 1.7ms)
+
+
+Started GET "/users" for ::1 at 2021-09-15 16:12:42 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.3ms)
+
+
+Started DELETE "/users/2" for ::1 at 2021-09-15 16:15:02 -0400
+Processing by UsersController#destroy as */*
+  Parameters: {"user"=>{"name"=>"edited_elliot"}, "id"=>"2"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:34
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:36
+  [1m[36mUser Destroy (0.7ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 2]]
+  ↳ app/controllers/users_controller.rb:36
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:36
+Redirected to http://localhost:3000/users
+Completed 302 Found in 6ms (ActiveRecord: 2.1ms)
+
+
+Started GET "/users" for ::1 at 2021-09-15 16:15:02 -0400
+Processing by UsersController#index as */*
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/users_controller.rb:5
+Completed 200 OK in 5ms (Views: 2.7ms | ActiveRecord: 1.1ms)
+
+
+Started PATCH "/users/3" for ::1 at 2021-09-15 16:15:16 -0400
+Processing by UsersController#update as */*
+  Parameters: {"user"=>{"name"=>"edited_elliot"}, "id"=>"3"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:24
+Completed 404 Not Found in 2ms (ActiveRecord: 0.4ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=3):
+  
+app/controllers/users_controller.rb:24:in `update'
+Started PATCH "/users/1" for ::1 at 2021-09-15 16:15:26 -0400
+Processing by UsersController#update as */*
+  Parameters: {"user"=>{"name"=>"edited_elliot"}, "id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:24
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:26
+  [1m[36mUser Update (0.8ms)[0m  [1m[33mUPDATE "users" SET "name" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["name", "edited_elliot"], ["updated_at", "2021-09-15 20:15:26.976517"], ["id", 1]]
+  ↳ app/controllers/users_controller.rb:26
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:26
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 7ms (ActiveRecord: 2.1ms)
+
+
+Started GET "/users/1" for ::1 at 2021-09-15 16:15:26 -0400
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19
+Completed 200 OK in 4ms (Views: 1.0ms | ActiveRecord: 0.4ms)
+
+
+Started PATCH "/users/1" for ::1 at 2021-09-15 16:16:19 -0400
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/stella/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.6/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#update as */*
+  Parameters: {"user"=>{"name"=>"edited_elliot"}, "id"=>"1"}
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:24
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:26
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:26
