@@ -9,8 +9,17 @@
 User.destroy_all
   
   # Instructors
-elliot = User.create!(name: "all_knowing_elliot", email: "those_are_teef@aa.io")
-ryan = User.create!(name: "will_climb_rocks", email: "boulderz@aa.io")
-dean = User.create!(name: "dean_machine", email: "deans_diary@aa.io")
-angela = User.create!(name: "loves_capy", email: "chosenone@aa.io")
-charlos = User.create!(name: "charlos_gets_buckets", email: "ballin@aa.io")
+elliot = User.create!(username: "all_knowing_elliot")
+ryan = User.create!(username: "will_climb_rocks")
+dean = User.create!(username: "dean_machine")
+angela = User.create!(username: "loves_capy")
+charlos = User.create!(username: "charlos_gets_buckets")
+
+Artwork.destroy_all
+
+art1 = Artwork.create!(title: "title1", image_url: 'default', artist_id: elliot.id)
+art2 = Artwork.create!(title: "title2", image_url: 'default', artist_id: elliot.id)
+art3 = Artwork.create!(title: "title3", image_url: 'default', artist_id: dean.id)
+art4 = Artwork.create!(title: "title4", image_url: 'default', artist_id: angela.id)
+art5 = Artwork.create!(title: "title5", image_url: 'default', artist_id: charlos.id)
+art6 = Artwork.create!(title: "title6", image_url: 'default', artist_id: elliot.id)
