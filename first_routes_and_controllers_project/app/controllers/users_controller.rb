@@ -1,16 +1,28 @@
 class UsersController < ApplicationController
     
     def index
-        render plain: "I'm in the index action!"
+        @users = User.all
+        render json: @users
     end
 
     def create
-    render json: params
+        user = User.new(user_params)
+        # replace the `user_attributes_here` with the actual attribute keys
+        if user.save
+            render json: user
+        else
+            render json: user.error.full_messages, status: 422
+        end
     end
 
     def show
         render json: params
-        
+    end
+
+    private
+
+    def user_params
+        params.require(:user).permit(:email, :name)
     end
 
 end
