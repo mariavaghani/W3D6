@@ -41,3 +41,6 @@ comm1 = Comment.create!(user_id: angela.id, artwork_id:art1.id, body: "I could d
 comm1 = Comment.create!(user_id: elliot.id, artwork_id:art2.id, body: "Never seen anything better")
 comm1 = Comment.create!(user_id: charlos.id, artwork_id:art4.id, body: "blew my mind!!!")
 
+# Likes.destroy_all
+
+# like1 = Like.create!(likeable_id: elliot.id, likeable_type: :User)
