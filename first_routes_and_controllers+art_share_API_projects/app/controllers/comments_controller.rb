@@ -1,32 +1,35 @@
 class CommentsController < ApplicationController
 
     def index
-        @user_artworks = User.find(params[:user_id]).artworks
-        @user_shared_artworks = User.find(params[:user_id]).shared_artworks
-        @artworks_to_show = {created_artworks: @user_artworks, shared_artworks: @user_shared_artworks}
-        render json: @artworks_to_show
+        if params[:user_id]
+            @comment = User.find(params[:user_id]).comments
+        elsif params[:artwork_id]
+            @comment = Artwork.find(params[:artwork_id]).comments
+        end
+
+        render json: @comment
     end
 
     def create
-        @user = User.new(user_params)
+        @comment = Comment.new(comment_params)
         # replace the `user_attributes_here` with the actual attribute keys
-        if @user.save
-            render json: @user
+        if @comment.save
+            render json: @comment
         else
-            render json: @user.errors.full_messages, status: 422
+            render json: @comment.errors.full_messages, status: 422
         end
     end
 
     def destroy
-        @user = User.find(params[:id])
-
-        @user.destroy
-        redirect_to users_url
+        @comment = Comment.find(params[:id])
+        
+        render json: @comment
+        @comment.destroy
     end
 
     private
 
-    def user_params
-        params.require(:user).permit(:username)
+    def comment_params
+        params.require(:comment).permit(:user_id, :artwork_id, :body)
     end
 end
