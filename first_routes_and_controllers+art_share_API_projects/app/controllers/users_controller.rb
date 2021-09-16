@@ -6,42 +6,41 @@ class UsersController < ApplicationController
     end
 
     def create
-        user = User.new(user_params)
+        @user = User.new(user_params)
         # replace the `user_attributes_here` with the actual attribute keys
-        if user.save
-            render json: user
+        if @user.save
+            render json: @user
         else
-            render json: user.errors.full_messages, status: 422
+            render json: @user.errors.full_messages, status: 422
         end
     end
 
     def show
-        user = User.find(params[:id])
-        render json: user
+        @user = User.find(params[:id])
+        render json: @user
     end
 
     def update
-        user = User.find(params[:id])
+        @user = User.find(params[:id])
         
-        if user.update(user_params)
-            debugger
-            redirect_to show_user_url(user)
+        if @user.update(user_params)
+            redirect_to show_user_url(@user)
         else
-            render json: user.errors.full_messages, status: :unprocessable_entity
+            render json: @user.errors.full_messages, status: :unprocessable_entity
         end
     end
 
     def destroy
-        user = User.find(params[:id])
+        @user = User.find(params[:id])
 
-        user.destroy
+        @user.destroy
         redirect_to users_url
     end
 
     private
 
     def user_params
-        params.require(:user).permit(:email, :name)
+        params.require(:user).permit(:username)
     end
 
 end
