@@ -31,3 +31,13 @@ art_share2 = ArtworkShare.create!(viewer_id: dean.id, artwork_id:art3.id)
 art_share3 = ArtworkShare.create!(viewer_id: angela.id, artwork_id:art6.id)
 art_share4 = ArtworkShare.create!(viewer_id: charlos.id, artwork_id:art1.id)
 art_share5 = ArtworkShare.create!(viewer_id: ryan.id, artwork_id:art1.id)
+
+
+Comment.destroy_all
+
+comm1 = Comment.create!(user_id: elliot.id, artwork_id:art1.id, body: "Pretty cool")
+comm1 = Comment.create!(user_id: dean.id, artwork_id:art3.id, body: "meh")
+comm1 = Comment.create!(user_id: angela.id, artwork_id:art1.id, body: "I could do better")
+comm1 = Comment.create!(user_id: elliot.id, artwork_id:art2.id, body: "Never seen anything better")
+comm1 = Comment.create!(user_id: charlos.id, artwork_id:art4.id, body: "blew my mind!!!")
+
