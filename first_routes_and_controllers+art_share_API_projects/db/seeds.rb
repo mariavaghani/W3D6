@@ -36,11 +36,20 @@ art_share5 = ArtworkShare.create!(viewer_id: ryan.id, artwork_id:art1.id)
 Comment.destroy_all
 
 comm1 = Comment.create!(user_id: elliot.id, artwork_id:art1.id, body: "Pretty cool")
-comm1 = Comment.create!(user_id: dean.id, artwork_id:art3.id, body: "meh")
-comm1 = Comment.create!(user_id: angela.id, artwork_id:art1.id, body: "I could do better")
-comm1 = Comment.create!(user_id: elliot.id, artwork_id:art2.id, body: "Never seen anything better")
-comm1 = Comment.create!(user_id: charlos.id, artwork_id:art4.id, body: "blew my mind!!!")
+comm2 = Comment.create!(user_id: dean.id, artwork_id:art3.id, body: "meh")
+comm3 = Comment.create!(user_id: angela.id, artwork_id:art1.id, body: "I could do better")
+comm4 = Comment.create!(user_id: elliot.id, artwork_id:art2.id, body: "Never seen anything better")
+comm5 = Comment.create!(user_id: charlos.id, artwork_id:art4.id, body: "blew my mind!!!")
 
-# Likes.destroy_all
+Like.destroy_all
 
-# like1 = Like.create!(likeable_id: elliot.id, likeable_type: :User)
+like1 = Like.create!(user_id: elliot.id, likeable_id: art1.id, likeable_type: :Artwork)
+like2 = Like.create!(user_id: dean.id, likeable_id: art2.id, likeable_type: :Artwork)
+like3 = Like.create!(user_id: ryan.id, likeable_id: comm1.id, likeable_type: :Comment)
+like4 = Like.create!(user_id: ryan.id, likeable_id: comm2.id, likeable_type: :Comment)
+like5 = Like.create!(user_id: angela.id, likeable_id: comm1.id, likeable_type: :Comment)
+like6 = Like.create!(user_id: charlos.id, likeable_id: art5.id, likeable_type: :Artwork)
+like7 = Like.create!(user_id: angela.id, likeable_id: art4.id, likeable_type: :Artwork)
+like8 = Like.create!(user_id: charlos.id, likeable_id: comm3.id, likeable_type: :Comment)
+like9 = Like.create!(user_id: elliot.id, likeable_id: comm5.id, likeable_type: :Comment)
+

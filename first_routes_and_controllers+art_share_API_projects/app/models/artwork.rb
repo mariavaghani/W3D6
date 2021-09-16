@@ -8,6 +8,7 @@
 #  artist_id :integer          not null
 #
 class Artwork < ApplicationRecord
+    validates_uniqueness_of :title, {scope: :artist_id}
     belongs_to :artist,
         primary_key: :id,
         foreign_key: :artist_id,
