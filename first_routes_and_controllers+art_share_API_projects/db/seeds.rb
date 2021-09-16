@@ -23,3 +23,11 @@ art3 = Artwork.create!(title: "title3", image_url: 'default', artist_id: dean.id
 art4 = Artwork.create!(title: "title4", image_url: 'default', artist_id: angela.id)
 art5 = Artwork.create!(title: "title5", image_url: 'default', artist_id: charlos.id)
 art6 = Artwork.create!(title: "title6", image_url: 'default', artist_id: elliot.id)
+
+ArtworkShare.destroy_all
+
+art_share1 = ArtworkShare.create!(viewer_id: elliot.id, artwork_id:art1.id)
+art_share2 = ArtworkShare.create!(viewer_id: dean.id, artwork_id:art3.id)
+art_share3 = ArtworkShare.create!(viewer_id: angela.id, artwork_id:art6.id)
+art_share4 = ArtworkShare.create!(viewer_id: charlos.id, artwork_id:art1.id)
+art_share5 = ArtworkShare.create!(viewer_id: ryan.id, artwork_id:art1.id)
