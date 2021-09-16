@@ -20,4 +20,14 @@ Rails.application.routes.draw do
   resources :artworks do
     resources :comments, only: :index
   end
+  
+  # resources :users do
+  #   resources :artworks do
+  #     member do
+  #       get 'like'
+  #     end
+  # end
+      
+  # users/1/artworks/1/favorite
+end
 end

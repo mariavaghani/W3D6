@@ -39,6 +39,11 @@ class ArtworksController < ApplicationController
         redirect_to artworks_url
     end
 
+    # def like
+    #     render json: params
+        
+    # end
+
     private
 
     def artwork_params

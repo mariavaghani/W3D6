@@ -6,6 +6,7 @@ class UsersController < ApplicationController
         else
             @users = User.all
         end
+        
         render json: @users
     end
 
@@ -21,7 +22,9 @@ class UsersController < ApplicationController
 
     def show
         @user = User.find(params[:id])
-        render json: @user
+        @user_with_likes = {user: @user, liked_comments: @user.liked_comments, liked_artworks: @user.liked_artworks}
+        
+        render json: @user_with_likes
     end
 
     def update
