@@ -45,4 +45,12 @@ class User < ApplicationRecord
         through: :likes,
         source: :likeable,
         source_type: :Comment
+
+    def favorited_artworks
+        self.artworks.select {|artwork| artwork.favorite}
+    end
+
+    def favorited_shared_artworks
+        self.shared_artworks.select {|artwork| artwork.favorite}
+    end
 end

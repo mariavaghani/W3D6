@@ -27,7 +27,19 @@ Rails.application.routes.draw do
   #       get 'like'
   #     end
   # end
-      
+  
   # users/1/artworks/1/favorite
-end
+
+  resources :artworks do
+    member do
+      get 'favorite'
+    end
+  end
+
+  resources :users do
+    member do
+      get 'favorited_artworks'
+    end
+  end
+
 end

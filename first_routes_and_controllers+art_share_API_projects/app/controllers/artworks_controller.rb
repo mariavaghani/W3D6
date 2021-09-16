@@ -41,8 +41,14 @@ class ArtworksController < ApplicationController
 
     # def like
     #     render json: params
-        
     # end
+
+    def favorite
+        @artwork = Artwork.find(params[:id])
+        @artwork.favorite = true
+        @artwork.save!
+        render json: @artwork
+    end
 
     private
 

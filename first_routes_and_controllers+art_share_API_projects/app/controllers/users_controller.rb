@@ -44,6 +44,15 @@ class UsersController < ApplicationController
         redirect_to users_url
     end
 
+    def favorited_artworks
+        @favorited_artworks = User.find(params[:id]).favorited_artworks
+        @favorited_shared_artworks = User.find(params[:id]).favorited_shared_artworks
+
+        @all_favorted_artworks = {favorited_artworks: @favorited_artworks, favorited_shared_artworks: @favorited_shared_artworks}
+
+        render json: @all_favorted_artworks
+    end
+
     private
 
     def user_params
