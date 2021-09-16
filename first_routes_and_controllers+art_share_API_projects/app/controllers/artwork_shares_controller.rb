@@ -2,7 +2,6 @@ class ArtworkSharesController < ApplicationController
 
     def create
         @artwork_share = ArtworkShare.new(artwork_share_params)
-        # replace the `user_attributes_here` with the actual attribute keys
         if @artwork_share.save
             render json: @artwork_share
         else

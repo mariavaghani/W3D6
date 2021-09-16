@@ -12,7 +12,6 @@ class CommentsController < ApplicationController
 
     def create
         @comment = Comment.new(comment_params)
-        # replace the `user_attributes_here` with the actual attribute keys
         if @comment.save
             render json: @comment
         else

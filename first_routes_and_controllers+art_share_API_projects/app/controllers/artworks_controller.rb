@@ -9,7 +9,6 @@ class ArtworksController < ApplicationController
 
     def create
         @artwork = Artwork.new(artwork_params)
-        # replace the `user_attributes_here` with the actual attribute keys
         if @artwork.save
             render json: @artwork
         else
